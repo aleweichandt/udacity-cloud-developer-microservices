@@ -12,7 +12,7 @@ spec:
         service: backend-feed
     spec:
       containers:
-      - image: alew/udacity-restapi-feed
+      - image: aleweichandt/udacity-restapi-feed
         name: backend-feed
         imagePullPolicy: IfNotPresent  
         resources:

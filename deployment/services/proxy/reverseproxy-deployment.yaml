@@ -13,7 +13,7 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: alew/reverseproxy
+      - image: aleweichandt/reverseproxy
         name: reverseproxy
         imagePullPolicy: IfNotPresent          
         resources:
