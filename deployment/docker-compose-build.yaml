@@ -1,0 +1,18 @@
+version: "3"
+services:
+ reverseproxy:
+  build:
+    context: ../proxy
+  image: alew/reverseproxy 
+ backend_user:
+  build:
+    context: ../restapi-user
+  image: alew/udacity-restapi-user
+ backend_feed:
+  build:
+    context: ../restapi-feed 
+  image: alew/udacity-restapi-feed
+ frontend:
+  build:
+    context: ../frontend 
+  image: alew/udacity-frontend:local
