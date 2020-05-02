@@ -13,7 +13,7 @@ spec:
         api: external        
     spec:
       containers:
-      - image: alew/udacity-frontend:local
+      - image: aleweichandt/udacity-frontend:local
         name: frontend
         imagePullPolicy: IfNotPresent          
         ports:
