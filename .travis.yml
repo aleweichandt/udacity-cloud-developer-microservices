@@ -2,8 +2,16 @@ language: minimal
 
 services: docker
 
+branches:
+  only:
+  - master
+
 env:
   - DOCKER_COMPOSE_VERSION=1.23.2
+
+stages:
+  - name: deploy
+    if: type = push
 
 before_install:
   - docker -v && docker-compose -v
@@ -18,4 +26,8 @@ before_install:
 
 
 install:
-  - docker-compose -f deployment/docker-compose-build.yaml build --parallel 
+  - docker-compose -f deployment/docker-compose-build.yaml build --parallel
+
+deploy:
+  - echo $DOCKHUB_PWD | docker login --username $DOCKHUB_USER --password-stdin
+  - docker-compose -f deployment/docker-compose-build.yaml push
