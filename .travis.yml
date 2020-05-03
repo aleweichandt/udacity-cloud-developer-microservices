@@ -10,7 +10,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.23.2
 
 stages:
-  - name: deploy
+  - name: script
     if: type = push
 
 before_install:
@@ -23,11 +23,9 @@ before_install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
 
-
-
 install:
   - docker-compose -f deployment/docker-compose-build.yaml build --parallel
 
-deploy:
+script:
   - echo $DOCKHUB_PWD | docker login --username $DOCKHUB_USER --password-stdin
   - docker-compose -f deployment/docker-compose-build.yaml push
