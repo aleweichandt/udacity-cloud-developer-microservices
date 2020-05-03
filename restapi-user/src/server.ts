@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { sequelize } from './sequelize';
 
 import { IndexRouter } from './controllers/v0/index.router';
@@ -24,6 +24,11 @@ import { V0MODELS } from './controllers/v0/model.index';
   });
 
   app.use('/api/v0/', IndexRouter)
+
+  //Healtcheck
+  app.get('/status', async (req: Request, res: Response) => {
+    res.status(200).send('ok');
+  })
 
   // Root URI call
   app.get( "/", async ( req, res ) => {
